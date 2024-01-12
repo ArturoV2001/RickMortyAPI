@@ -1,4 +1,5 @@
 <div class="container">
+    <!--Este div nos muestra la barra de busqueda-->
     <div *ngIf="!searchFlag">
         <h1 style="width: 100%; text-align: center;color: rgb(195, 235, 114);">Search characters</h1>
         <hr>
@@ -20,6 +21,7 @@
     </div>
 
     <div *ngIf="searchFlag">
+        <!--Aqui podemos encontrar el listado de personajes encontrados-->
         <br>
         <h3 style="width: 100%; text-align: center;">Results of "{{searchText}}"<span *ngIf="findResultsFlag">: {{datos.info.count}}</span>.</h3>
         <br>

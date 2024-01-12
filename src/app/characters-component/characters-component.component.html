@@ -1,3 +1,4 @@
+<!--Nos muestra cuantas y en que pagina estamos actualmente-->
 <div class="container">
     <br>
     <h4 style="width: 100%; text-align: center;">Page {{numActualPage}} of {{datos.info.pages}}.</h4>
@@ -5,12 +6,14 @@
     <br>
     <div class="row row-cols-1 row-cols-md-4 g-4">
         <div class="col" *ngFor="let item of datos.results">
+            <!--Componete de los card que nos muestran la vista previa de los personajes-->
             <characters-card-component [characterData]="item"></characters-card-component>
         </div>
     </div>
 </div>
 <br>
 <hr>
+<!--Componente de  paginacion-->
 <nav aria-label="Page navigation example" *ngIf="datos.info.pages>1">
     <ul class="pagination justify-content-center">
         <li class="page-item" *ngIf="datos.info.prev !== null">

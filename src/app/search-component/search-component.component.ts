@@ -36,16 +36,14 @@ export class SearchComponentComponent {
     prom.then(
       data => {
         this.datos = data;
-        //console.log(this.datos.info.count);
         this.searchFlag = true;
       },
       error => {
-        //console.log(this.findResultsText);
         this.searchFlag = true;
       }
     )
   }
-
+  //Cambia de pagina segun se seleccione en la paginacion
   searchCompPaginationBtn(numPage:number){
     this.numActualPage = numPage;
     this.datos = null;

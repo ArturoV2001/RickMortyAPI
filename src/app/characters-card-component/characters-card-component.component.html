@@ -1,10 +1,11 @@
+<!--Card de la vista previa del personaje-->
 <div class="card" style="opacity: 100%;">
   <img src="{{characterData.image}}" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">{{characterData.name}}</h5>
     <p class="card-text">{{characterData.species}}</p>
     <div class="d-flex justify-content-center">
-      <a class="btn btn-info" style="color: rgb(195, 235, 114)" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="sendModal()">More info...</a>
+      <a class="btn btn-info" style="color: rgb(195, 235, 114)" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="charactersSendModal()">More info...</a>
     </div>
   </div>
 </div>

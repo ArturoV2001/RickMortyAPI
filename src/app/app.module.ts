@@ -7,7 +7,6 @@ import { HomeComponent } from './home/home.component';
 import { HttpClientModule} from '@angular/common/http';
 import { SearchComponentComponent } from './search-component/search-component.component';
 import { CharactersComponentComponent } from './characters-component/characters-component.component';
-import { LocationsComponentComponent } from './locations-component/locations-component.component';
 import { FormsModule } from '@angular/forms';
 import { CharactersCardComponentComponent } from './characters-card-component/characters-card-component.component';
 import { CharacterModalComponentComponent } from './character-modal-component/character-modal-component.component';
@@ -18,7 +17,6 @@ import { CharacterModalComponentComponent } from './character-modal-component/ch
     HomeComponent,
     SearchComponentComponent,
     CharactersComponentComponent,
-    LocationsComponentComponent,
     CharactersCardComponentComponent,
     CharacterModalComponentComponent
   ],

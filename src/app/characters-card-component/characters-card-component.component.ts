@@ -12,7 +12,8 @@ export class CharactersCardComponentComponent {
 
   constructor(private sharedServ:SharedDataService) { }
 
-  sendModal(){
+  //Envia al componente del modal la informacion del personaje para mostrarla de una manera mas completa
+  charactersSendModal(){
     this.sharedServ.enviarDatos(this.characterData);
   }
 

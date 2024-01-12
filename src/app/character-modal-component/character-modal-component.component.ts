@@ -9,33 +9,16 @@ import { SharedDataService } from '../services/shared-data.service';
 export class CharacterModalComponentComponent implements OnInit {
 
   datos: any;
-  episodes: number[];
-  date: string;
 
-  constructor(private sharedServ: SharedDataService) {
-    this.episodes = [];
-    this.date = "";
-  }
+  constructor(private sharedServ: SharedDataService) { }
 
   ngOnInit(): void {
     this.sharedServ.obtenerDatos().subscribe(data => {
       this.datos = data;
     })
   }
-
-  characterModalGetEpisodes():number[]{
-    this.episodes = [];
-    for (let i of this.datos.episode) {
-      this.episodes.push(Number(i.substring(43, i.length)));
-    }
-    return this.episodes;
-  }
-  characterModalGetDate():string{
-    let d = new Date(this.datos.created);
-    this.date = d.getDate + "/" + d.getMonth + "/" + d.getFullYear;
-    return this.date;
-  }
-
+  
+  //Nos dice si la primera letra de la especi es un vocal
   characterModalisVowel(text:string):boolean{
     const primeraLetra = text.charAt(0).toLowerCase();
     return ['a', 'e', 'i', 'o', 'u'].includes(primeraLetra);
