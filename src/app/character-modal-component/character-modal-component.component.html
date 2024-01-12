@@ -1,0 +1,29 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">{{datos.name}}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="{{datos.image}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <br>
+                    <h6 class="card-text" style="width: 100%; text-align: center;">{{datos.name}}<span *ngIf="datos.species !='' && datos.species != 'unknown' "> is a<span *ngIf="characterModalisVowel(datos.species)">n</span> {{datos.species}} </span><span *ngIf="datos.origin.name !='' && datos.origin.name!= 'unknown' ">coming from {{datos.origin.name}}</span>.</h6>
+                    <br>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" *ngIf="datos.gender !='' ">Gender: {{datos.gender}}.</li>
+                    <li class="list-group-item" *ngIf="datos.type !='' ">Type: {{datos.type}}</li>
+                    <li class="list-group-item" *ngIf="datos.status !='' ">Status: {{datos.status}}</li>
+                    <li class="list-group-item" *ngIf="datos.location.name !='' ">Location: {{datos.location.name}}</li>
+                    <li class="list-group-item" *ngIf="datos.created !='' ">First appereance: {{(datos.created).substring(0,10)}}</li>
+                </ul>
+            </div>
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button type="button" class="btn btn-info" style="color: rgb(195, 235, 114);" data-bs-dismiss="modal">Nice!</button>
+            </div>
+            <br>
+        </div>
+    </div>
+</div>

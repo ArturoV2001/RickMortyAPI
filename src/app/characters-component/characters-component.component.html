@@ -1,0 +1,38 @@
+<div class="container">
+    <br>
+    <h4 style="width: 100%; text-align: center;">Page {{numActualPage}} of {{datos.info.pages}}.</h4>
+    <hr>
+    <br>
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+        <div class="col" *ngFor="let item of datos.results">
+            <characters-card-component [characterData]="item"></characters-card-component>
+        </div>
+    </div>
+</div>
+<br>
+<hr>
+<nav aria-label="Page navigation example" *ngIf="datos.info.pages>1">
+    <ul class="pagination justify-content-center">
+        <li class="page-item" *ngIf="datos.info.prev !== null">
+            <button class="page-link" (click)="characterCompPaginationBtn(numActualPage-1)">Previous</button>
+        </li>
+        <li class="page-item" *ngIf="(numActualPage-2)>0">
+            <button class="page-link" (click)="characterCompPaginationBtn(numActualPage-2)">{{numActualPage-2}}</button>
+        </li>
+        <li class="page-item" *ngIf="(numActualPage-1)>0">
+            <button class="page-link" (click)="characterCompPaginationBtn(numActualPage-1)">{{numActualPage-1}}</button>
+        </li>
+        <li class="page-item disabled">
+            <button class="page-link" (click)="characterCompPaginationBtn(numActualPage)">{{numActualPage}}</button>
+        </li>
+        <li class="page-item" *ngIf="(numActualPage+1)<=datos.info.pages">
+            <button class="page-link" (click)="characterCompPaginationBtn(numActualPage+1)">{{numActualPage+1}}</button>
+        </li>
+        <li class="page-item" *ngIf="(numActualPage+2)<=datos.info.pages">
+            <button class="page-link" (click)="characterCompPaginationBtn(numActualPage+2)">{{numActualPage+2}}</button>
+        </li>
+        <li class="page-item" *ngIf="datos.info.next !== null">
+            <button class="page-link" (click)="characterCompPaginationBtn(numActualPage+1)">Next</button>
+        </li>
+    </ul>
+</nav>

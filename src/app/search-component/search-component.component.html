@@ -1,0 +1,74 @@
+<div class="container">
+    <div *ngIf="!searchFlag">
+        <h1 style="width: 100%; text-align: center;color: rgb(195, 235, 114);">Search characters</h1>
+        <hr>
+        <br>
+        <div class="input-group mb-3 align-middle">
+            <input type="text" class="form-control" aria-label="Text input with dropdown button"
+                placeholder="Introduce the name of the character..." [(ngModel)]="searchText">
+            <button type="button" class="btn btn-info w-50" style="color: rgb(195, 235, 114);font-size: 3vh;"
+                (click)="searchCompGetPage(numActualPage)">
+                Search
+                <svg xmlns="http://www.w3.org/2000/svg" height="4vh" fill="currentColor" class="bi bi-search"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                </svg>
+            </button>
+        </div>
+        <br>
+    </div>
+
+    <div *ngIf="searchFlag">
+        <br>
+        <h3 style="width: 100%; text-align: center;">Results of "{{searchText}}"<span *ngIf="findResultsFlag">: {{datos.info.count}}</span>.</h3>
+        <br>
+        <div *ngIf="!findResultsFlag">
+            <h4 style="width: 100%; text-align: center;">We cannot find results.</h4>
+        </div>
+        <div *ngIf="findResultsFlag">
+            <h4 style="width: 100%; text-align: center;">Page {{numActualPage}} of {{datos.info.pages}}.</h4>
+            <hr>   
+            <br>
+            <div class="container">
+                <div class="row row-cols-1 row-cols-md-4 g-4">
+                    <div class="col" *ngFor="let item of datos.results">
+                        <characters-card-component [characterData]="item"></characters-card-component>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <hr>
+            <nav aria-label="Page navigation example" *ngIf="datos.info.pages>1">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item" *ngIf="datos.info.prev !== null">
+                        <button class="page-link" (click)="searchCompPaginationBtn(numActualPage-1)">Previous</button>
+                    </li>
+                    <li class="page-item" *ngIf="(numActualPage-2)>0">
+                        <button class="page-link"
+                            (click)="searchCompPaginationBtn(numActualPage-2)">{{numActualPage-2}}</button>
+                    </li>
+                    <li class="page-item" *ngIf="(numActualPage-1)>0">
+                        <button class="page-link"
+                            (click)="searchCompPaginationBtn(numActualPage-1)">{{numActualPage-1}}</button>
+                    </li>
+                    <li class="page-item disabled">
+                        <button class="page-link"
+                            (click)="searchCompPaginationBtn(numActualPage)">{{numActualPage}}</button>
+                    </li>
+                    <li class="page-item" *ngIf="(numActualPage+1)<=datos.info.pages">
+                        <button class="page-link"
+                            (click)="searchCompPaginationBtn(numActualPage+1)">{{numActualPage+1}}</button>
+                    </li>
+                    <li class="page-item" *ngIf="(numActualPage+2)<=datos.info.pages">
+                        <button class="page-link"
+                            (click)="searchCompPaginationBtn(numActualPage+2)">{{numActualPage+2}}</button>
+                    </li>
+                    <li class="page-item" *ngIf="datos.info.next !== null">
+                        <button class="page-link" (click)="searchCompPaginationBtn(numActualPage+1)">Next</button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
